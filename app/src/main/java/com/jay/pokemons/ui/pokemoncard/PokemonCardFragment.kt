@@ -8,33 +8,28 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.jay.pokemons.R
-import com.jay.pokemons.data.local.PokemonLocalDataSourceImpl
-import com.jay.pokemons.data.remote.PokemonRemoteDataSourceImpl
-import com.jay.pokemons.data.repository.PokemonRepositoryImpl
 import com.jay.pokemons.databinding.FragmentPokemonCardBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PokemonCardFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentPokemonCardBinding
+
     // bundle 사용하는 걸 추천
     private var pokemonId: Int = 0
 
-    private val viewModel: PokemonCardViewModel by viewModels {
-        PokemonCardViewModelFactory(
-            PokemonRepositoryImpl(
-                pokemonRemoteDataSource = PokemonRemoteDataSourceImpl,
-                pokemonLocalDataSource = PokemonLocalDataSourceImpl
-            )
-        )
-    }
+    private val viewModel: PokemonCardViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,
-            R.layout.fragment_pokemon_card, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_pokemon_card, container, false
+        )
         return binding.root
     }
 

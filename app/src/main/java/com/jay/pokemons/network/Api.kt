@@ -1,12 +1,11 @@
 package com.jay.pokemons.network
 
 import com.jay.pokemons.model.PokemonResponse
+import javax.inject.Inject
 
-object Api {
-
-    private val apiService by lazy {
-        ApiClient.apiService
-    }
+class Api @Inject constructor(
+    private val apiService: ApiService
+) {
 
     suspend fun getPokemonList(offset: Int? = null, limit: Int? = null) =
         apiService.getPokemonList(offset, limit)

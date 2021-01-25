@@ -5,8 +5,9 @@ import com.jay.pokemons.data.local.PokemonLocalDataSource
 import com.jay.pokemons.data.remote.PokemonRemoteDataSource
 import com.jay.pokemons.model.PokeMonListResponse
 import com.jay.pokemons.model.PokemonResponse
+import javax.inject.Inject
 
-class PokemonRepositoryImpl(
+class PokemonRepositoryImpl @Inject constructor(
     private val pokemonRemoteDataSource: PokemonRemoteDataSource,
     private val pokemonLocalDataSource: PokemonLocalDataSource
 ) : PokemonRepository {

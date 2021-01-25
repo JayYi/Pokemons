@@ -5,32 +5,21 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.jay.pokemons.R
-import com.jay.pokemons.data.local.PokemonLocalDataSourceImpl
-import com.jay.pokemons.data.remote.PokemonRemoteDataSourceImpl
-import com.jay.pokemons.data.repository.PokemonRepositoryImpl
 import com.jay.pokemons.databinding.ActivityMainBinding
 import com.jay.pokemons.ui.pokemoncard.PokemonCardFragment
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: MainViewModel by viewModels {
-        MainViewModelFactory(repository)
-    }
+    private val viewModel: MainViewModel by viewModels()
 
     private lateinit var binding: ActivityMainBinding
+    @Inject
+    lateinit var adapter: PokemonAdapter
 
     private var cardDialog: PokemonCardFragment? = null
-
-    private val repository by lazy {
-        PokemonRepositoryImpl(
-            pokemonRemoteDataSource = PokemonRemoteDataSourceImpl,
-            pokemonLocalDataSource = PokemonLocalDataSourceImpl
-        )
-    }
-
-    private val adapter by lazy {
-        PokemonAdapter()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

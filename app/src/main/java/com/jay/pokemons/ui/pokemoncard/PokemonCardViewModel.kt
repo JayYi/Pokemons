@@ -1,10 +1,14 @@
 package com.jay.pokemons.ui.pokemoncard
 
-import androidx.lifecycle.*
+import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.jay.pokemons.data.repository.PokemonRepository
 import kotlinx.coroutines.launch
 
-class PokemonCardViewModel (
+class PokemonCardViewModel @ViewModelInject constructor(
     private val repository: PokemonRepository
 ) : ViewModel() {
     private val _imageUrl: MutableLiveData<String> = MutableLiveData()
@@ -41,18 +45,6 @@ class PokemonCardViewModel (
             } else {
                 repository.deleteFavoritePokemonById(id)
             }
-        }
-    }
-}
-
-class PokemonCardViewModelFactory(
-    private val repository: PokemonRepository
-) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return if (modelClass.isAssignableFrom(PokemonCardViewModel::class.java)) {
-            PokemonCardViewModel(repository) as T
-        } else {
-            throw IllegalArgumentException()
         }
     }
 }

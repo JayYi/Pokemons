@@ -1,19 +1,12 @@
 package com.jay.pokemons.data.local
 
-import android.content.Context
-import com.jay.pokemons.MainApplication
 import com.jay.pokemons.data.database.PokemonDatabase
 import com.jay.pokemons.data.entity.PokemonFavoriteEntity
+import javax.inject.Inject
 
-object PokemonLocalDataSourceImpl : PokemonLocalDataSource {
-
-    private val context: Context by lazy {
-        MainApplication.instance
-    }
-
-    private val pokemonDatabase: PokemonDatabase by lazy {
-        PokemonDatabase.getInstance(context)
-    }
+class PokemonLocalDataSourceImpl @Inject constructor(
+    private val pokemonDatabase: PokemonDatabase
+) : PokemonLocalDataSource {
 
     override suspend fun insertMyFavoritePokemon(pokemonFavoriteEntity: PokemonFavoriteEntity) {
         pokemonDatabase.pokemonFavoriteDao().insert(pokemonFavoriteEntity)
