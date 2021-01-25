@@ -13,11 +13,13 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class RemoteDataSourceModule {
+object RemoteDataModule {
 
     @Singleton
-    @Binds
-    abstract fun bindRemoteDataSource(pokemonRemoteDataSourceImpl: PokemonRemoteDataSourceImpl): PokemonRemoteDataSource
+    @Provides
+    fun provideRemoteDataSource(api: Api): PokemonRemoteDataSource =
+        PokemonRemoteDataSourceImpl(api)
+
 
     @Singleton
     @Provides
