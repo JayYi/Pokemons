@@ -1,9 +1,10 @@
-package com.jay.pokemons
+package com.jay.pokemons.ui
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.jay.pokemons.R
 import com.jay.pokemons.data.remote.PokemonRemoteDataSourceImpl
 import com.jay.pokemons.data.repository.PokemonRepositoryImpl
 import com.jay.pokemons.databinding.ActivityMainBinding
@@ -26,7 +27,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this,
+            R.layout.activity_main
+        )
 
         binding.list.adapter = adapter.apply {
             clickEvent = {

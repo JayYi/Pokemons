@@ -7,14 +7,14 @@
     <data>
         <variable
             name="vm"
-            type="com.jay.pokemons.MainViewModel" />
+            type="com.jay.pokemons.ui.MainViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".ui.MainActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list"

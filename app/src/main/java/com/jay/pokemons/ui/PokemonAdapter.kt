@@ -1,4 +1,4 @@
-package com.jay.pokemons
+package com.jay.pokemons.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

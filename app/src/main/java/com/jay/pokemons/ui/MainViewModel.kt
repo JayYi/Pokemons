@@ -1,4 +1,4 @@
-package com.jay.pokemons
+package com.jay.pokemons.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
