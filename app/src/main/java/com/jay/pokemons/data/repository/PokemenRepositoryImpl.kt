@@ -1,6 +1,6 @@
 package com.jay.pokemons.data.repository
 
-import com.jay.paginglibraryexample.data.remote.PokemonRemoteDataSource
+import com.jay.pokemons.data.remote.PokemonRemoteDataSource
 import com.jay.pokemons.model.PokeMonListResponse
 
 class PokemonRepositoryImpl(

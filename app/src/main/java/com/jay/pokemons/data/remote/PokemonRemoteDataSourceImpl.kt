@@ -1,4 +1,4 @@
-package com.jay.paginglibraryexample.data.remote
+package com.jay.pokemons.data.remote
 
 import com.jay.pokemons.model.PokeMonListResponse
 import com.jay.pokemons.network.Api
