@@ -5,6 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.jay.pokemons.R
+import com.jay.pokemons.data.local.PokemonLocalDataSourceImpl
 import com.jay.pokemons.data.remote.PokemonRemoteDataSourceImpl
 import com.jay.pokemons.data.repository.PokemonRepositoryImpl
 import com.jay.pokemons.databinding.ActivityMainBinding
@@ -18,7 +19,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private val repository by lazy {
-        PokemonRepositoryImpl(PokemonRemoteDataSourceImpl)
+        PokemonRepositoryImpl(
+            pokemonRemoteDataSource = PokemonRemoteDataSourceImpl,
+            pokemonLocalDataSource = PokemonLocalDataSourceImpl
+        )
     }
 
     private val adapter by lazy {
@@ -27,7 +31,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,
+        binding = DataBindingUtil.setContentView(
+            this,
             R.layout.activity_main
         )
 
