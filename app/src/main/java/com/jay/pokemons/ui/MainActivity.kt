@@ -9,6 +9,7 @@ import com.jay.pokemons.data.local.PokemonLocalDataSourceImpl
 import com.jay.pokemons.data.remote.PokemonRemoteDataSourceImpl
 import com.jay.pokemons.data.repository.PokemonRepositoryImpl
 import com.jay.pokemons.databinding.ActivityMainBinding
+import com.jay.pokemons.ui.pokemoncard.PokemonCardFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,6 +18,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityMainBinding
+
+    private var cardDialog: PokemonCardFragment? = null
 
     private val repository by lazy {
         PokemonRepositoryImpl(
@@ -38,7 +41,15 @@ class MainActivity : AppCompatActivity() {
 
         binding.list.adapter = adapter.apply {
             clickEvent = {
-
+                cardDialog = PokemonCardFragment.newInstance(
+                    it.pid
+                )
+                    .also { dialog ->
+                        dialog.show(
+                            supportFragmentManager,
+                            PokemonCardFragment.TAG
+                        )
+                    }
             }
         }
 
@@ -46,5 +57,10 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         viewModel.init()
+    }
+
+    override fun onDestroy() {
+        cardDialog?.dismissAllowingStateLoss()
+        super.onDestroy()
     }
 }
