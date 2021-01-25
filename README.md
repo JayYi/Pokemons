@@ -18,3 +18,8 @@
 
 ## Open api
 - [Poke Api](https://pokeapi.co/) for RESTful API
+
+## TODO (해야?? 하고 싶은 것들)
+- data model 정리
+- multi module
+- clean architecture
