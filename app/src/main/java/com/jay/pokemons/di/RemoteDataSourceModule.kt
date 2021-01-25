@@ -4,7 +4,6 @@ import com.jay.pokemons.data.remote.PokemonRemoteDataSource
 import com.jay.pokemons.data.remote.PokemonRemoteDataSourceImpl
 import com.jay.pokemons.network.Api
 import com.jay.pokemons.network.ApiService
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,7 +12,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object RemoteDataModule {
+object RemoteDataSourceModule {
 
     @Singleton
     @Provides
