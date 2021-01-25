@@ -2,6 +2,7 @@ package com.jay.pokemons.network
 
 import android.util.Log
 import com.jay.pokemons.BuildConfig
+import com.jay.pokemons.util.peekBody
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
