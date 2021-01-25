@@ -5,7 +5,7 @@ import com.jay.pokemons.data.repository.PokemonRepository
 import com.jay.pokemons.model.Pokemon
 import kotlinx.coroutines.CoroutineScope
 
-class PokemonDataSourceFactory (
+class PokemonDataSourceFactory(
     private val repository: PokemonRepository,
     private val scope: CoroutineScope
 ) : DataSource.Factory<String, Pokemon>() {

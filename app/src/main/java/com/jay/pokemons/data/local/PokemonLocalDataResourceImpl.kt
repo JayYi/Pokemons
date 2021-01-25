@@ -5,7 +5,7 @@ import com.jay.pokemons.MainApplication
 import com.jay.pokemons.data.database.PokemonDatabase
 import com.jay.pokemons.data.entity.PokemonFavoriteEntity
 
-object PokemonLocalDataSourceImpl: PokemonLocalDataSource  {
+object PokemonLocalDataSourceImpl : PokemonLocalDataSource {
 
     private val context: Context by lazy {
         MainApplication.instance

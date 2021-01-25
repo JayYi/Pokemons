@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.jay.pokemons.databinding.ListItemPokemonBinding
 import com.jay.pokemons.model.Pokemon
-import java.lang.Exception
 import javax.inject.Inject
 
 class PokemonAdapter @Inject constructor() : PagedListAdapter<Pokemon, PokemonHolder>(
@@ -38,7 +37,7 @@ class PokemonAdapter @Inject constructor() : PagedListAdapter<Pokemon, PokemonHo
 
 class PokemonHolder(
     val binding: ListItemPokemonBinding
-): RecyclerView.ViewHolder(binding.root) {
+) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(pokemon: Pokemon) {
         with(binding) {
