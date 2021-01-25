@@ -3,7 +3,7 @@ package com.jay.paginglibraryexample.data.remote
 import com.jay.pokemons.model.PokeMonListResponse
 import com.jay.pokemons.network.Api
 
-class PokemonRemoteDataSourceImpl : PokemonRemoteDataSource {
+object PokemonRemoteDataSourceImpl : PokemonRemoteDataSource {
 
     private val api by lazy {
         Api
