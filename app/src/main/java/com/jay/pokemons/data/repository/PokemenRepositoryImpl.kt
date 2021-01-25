@@ -4,14 +4,18 @@ import com.jay.pokemons.data.entity.PokemonFavoriteEntity
 import com.jay.pokemons.data.local.PokemonLocalDataSource
 import com.jay.pokemons.data.remote.PokemonRemoteDataSource
 import com.jay.pokemons.model.PokeMonListResponse
+import com.jay.pokemons.model.PokemonResponse
 
 class PokemonRepositoryImpl(
     private val pokemonRemoteDataSource: PokemonRemoteDataSource,
     private val pokemonLocalDataSource: PokemonLocalDataSource
-): PokemonRepository {
+) : PokemonRepository {
 
     override suspend fun getPokemonList(offset: Int?, limit: Int?): PokeMonListResponse =
         pokemonRemoteDataSource.getPokemonList(offset, limit)
+
+    override suspend fun getPokemon(pokemonId: Int): PokemonResponse =
+        pokemonRemoteDataSource.getPokemon(pokemonId)
 
     override suspend fun insertFavoritePokemon(pokemonId: Int, pokemonName: String) {
         pokemonLocalDataSource.insertMyFavoritePokemon(
